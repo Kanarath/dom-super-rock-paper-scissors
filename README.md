@@ -1,2 +1,2 @@
-# dom-super-rock-paper-scissors
- DOM Project based card game
+# DOM_Project
+Project With DOM about Rock Papper Scissors Game.

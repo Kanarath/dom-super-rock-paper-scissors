@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Rock Paper Scissors</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+
+<body class="h-screen">
+    <!-- background -->
+    <div id="screen" class="fixed bg-cover w-screen h-screen bg-[url('./src/img/MAIN_TITLE.png')] zoom-in"></div>
+    <!-- music -->
+    <audio id="backgroundMusic" src="/src/sound/RPS_Loop.mp3" autoplay loop></audio>
+    <!-- modal Reuslts -->
+    <div id="modal" class="fixed hidden inset-0 z-10 bg-black bg-opacity-40 items-center justify-center ">
+        <div class="secondBackground text-center relative flex gap-4">
+            <!-- cards container -->
+            <div class="flex gap-20 absolute top-56 left-16 w-96 justify-between">
+                <!-- section card game -->
+                <section class="flex relative swap-container">
+                    <div class="w-120px h-192px perspective top-0 left-0 absolute transition-transform duration-500 card-2">
+                        <div class="relative w-full  bg-cover h-full transition-transform duration-500 transform-style-preserve-3d">
+                            <!-- Cara frontal -->
+                            <div id="handResults" class="absolute w-full h-full bg-cover text-white flex items-center justify-center backface-hidden">
+                            </div>
+                            <!-- Cara trasera -->
+                            <div class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover rotate-y-180">
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" w-120px h-192px perspective absolute top-0 left-[160px] transition-transform duration-500  card-1">
+                        <div class="relative w-full bg-cover h-full transition-transform duration-500 transform-style-preserve-3d">
+                            <!-- Cara frontal -->
+                            <div id="iaHandResults" class="absolute  w-full h-full bg-cover text-white flex items-center justify-center backface-hidden">
+                            </div>
+                            <!-- Cara trasera -->
+                            <div class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover rotate-y-180">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- power ups -->
+                <section class="flex relative">
+                    <div class="w-120px h-192px perspective absolute top-0 left-0 ">
+                        <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
+                            <!-- Cara frontal -->
+                            <div id="powerUpResults" class="absolute w-full h-full bg-cover text-white flex items-center justify-center backface-hidden">
+                            </div>
+                            <!-- Cara trasera -->
+                            <div class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center backface-hidden bg-cover rotate-y-180">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-120px h-192px perspective top-0 left-[160px] absolute ">
+                        <!-- Cara frontal -->
+                        <div id="iaPowerUpResults" class="relative bg-cover w-full h-full transition-transform duration-500 transform-style-preserve-3d">
+                            <div class="absolute w-full h-full bg-cover text-white flex items-center justify-center backface-hidden">
+                            </div>
+                            <!-- Cara trasera -->
+                            <div class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center backface-hidden bg-cover rotate-y-180">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="results absolute top-1"></div>
+            <div id="resultImg" class="resultImg zoom-in absolute top-1 right-12"></div>
+            <div class="flex">
+                <button id="playAgain" class="clickSoundActivated soundButton buttonNewGame hover:scale-105 absolute bottom-10 right-12" onclick="resetGame()">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <section id="computerCards"
+        class="container-Cards justify-center items-center gap-10 absolute top-20 right-40 opacity-0 scale-95 transition-all  duration-1000 pointer-events-none">
+        <article class="flex gap-6 rotate-x-180">
+            <div id="rock-iA" class="card w-120px h-192px perspective">
+                <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
+                    <!-- front -->
+                    <div
+                        class="absolute w-full h-full bg-green-500 text-white flex items-center justify-center rounded-lg backface-hidden rotate-y-180 bg-[url('./src/img/CARTA_PROYECTO_PAPEL.png')]">
+                    </div>
+                    <!-- back -->
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover ">
+                    </div>
+                </div>
+            </div>
+
+            <div id="paper-iA" class="card w-120px h-192px perspective">
+                <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_PAPEL.png')] bg-cover text-white flex items-center justify-center rounded-lg backface-hidden rotate-y-180">
+                    </div>
+                    <!-- back -->
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover">
+                    </div>
+                </div>
+            </div>
+
+            <div id="scissors-iA" class="card w-120px h-192px perspective">
+                <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
+                    <div
+                        class="absolute w-full h-full bg-green-500 text-white flex items-center justify-center rounded-lg backface-hidden rotate-y-180">
+                    </div>
+                    <!-- back -->
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover">
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="flex gap-6 rotate-x-180">
+            <div id="changeMinus-iA" class="card w-120px h-192px perspective">
+                <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
+                    <!-- Cara frontal -->
+                    <div
+                        class="absolute w-full h-full bg-green-500 text-white flex items-center justify-center rounded-lg backface-hidden rotate-y-180 bg-[url('./src/img/CARTA_PROYECTO_PIEDRA.png')]">
+                    </div>
+                    <!-- Cara trasera -->
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover">
+                    </div>
+                </div>
+            </div>
+
+            <div id="changePlus-iA" class="card w-120px h-192px perspective">
+                <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
+                    <div
+                        class="absolute w-full h-full bg-green-500 text-white flex items-center justify-center rounded-lg backface-hidden rotate-y-180 bg-[url('./src/img/CARTA_PROYECTO_PAPEL.png')]">
+                    </div>
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover">
+                    </div>
+                </div>
+            </div>
+
+            <div id="reverse-iA" class="card w-120px h-192px perspective">
+                <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
+                    <div
+                        class="absolute w-full h-full bg-green-500 text-white flex items-center justify-center rounded-lg backface-hidden rotate-y-180 bg-[url('./src/img/CARTA_PROYECTO_SCISSORS.png')]">
+                    </div>
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover">
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section id="playerCards"
+        class="container-Cards justify-center items-center gap-10 absolute bottom-20 left-24 opacity-0 scale-95 transition-all  duration-1000 pointer-events-none">
+        <article class="flex gap-6">
+            <div id="rock-player"
+                class="clickSoundActivated soundCards playerCard group w-120px h-192px perspective card">
+                <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d
+                group-hover:translate-y-[-40px]
+                cursorCards">
+                    <!-- Cara frontal -->
+                    <div
+                        class="absolute w-full h-full text-white flex items-center justify-center rounded-lg backface-hidden bg-[url('./src/img/CARTA_PROYECTO_PIEDRA.png')] bg-cover">
+                    </div>
+                    <!-- Cara trasera -->
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover rotate-y-180">
+                    </div>
+                </div>
+            </div>
+
+            <div id="paper-player"
+                class="clickSoundActivated soundCards group playerCard w-120px h-192px perspective card">
+                <div
+                    class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d  group-hover:translate-y-[-40px] cursorCards">
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_PAPEL.png')] bg-cover text-white flex items-center justify-center rounded-lg backface-hidden">
+                    </div>
+                    <!-- Cara trasera -->
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover rotate-y-180">
+                    </div>
+                </div>
+            </div>
+
+            <div id="scissors-player" class="clickSoundActivated soundCards group playerCard w-120px h-192px perspective card">
+                <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d  group-hover:translate-y-[-40px]
+                cursorCards">
+                    <div class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_SCISSORS.png')] bg-cover text-white flex items-center justify-center rounded-lg backface-hidden">
+                    </div>
+                    <!-- Cara trasera -->
+                    <div class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover rotate-y-180">
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="flex gap-6">
+            <div id="reversePower-player"
+                class="clickSoundActivated soundCards group playerPower w-120px h-192px perspective card">
+                <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d  group-hover:translate-y-[-40px]
+                cursorCards">
+                    <!-- Cara frontal -->
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_REVERSE.png')] bg-cover text-white flex items-center justify-center rounded-lg backface-hidden">
+                    </div>
+                    <!-- Cara trasera -->
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover rotate-y-180">
+                    </div>
+                </div>
+            </div>
+
+            <div id="changePlus-player"
+                class="clickSoundActivated soundCards group playerPower w-120px h-192px perspective card">
+                <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d  group-hover:translate-y-[-40px]
+                cursorCards">
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_CHANGE_PLUS.png')] bg-cover text-white flex items-center justify-center rounded-lg backface-hidden">
+                    </div>
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover rotate-y-180">
+                    </div>
+                </div>
+            </div>
+
+            <div id="changeMinus-player"
+                class="clickSoundActivated soundCards group playerPower w-120px h-192px perspective card">
+                <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d  group-hover:translate-y-[-40px]
+                cursorCards">
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_CHANGE_MINUS.png')] bg-cover text-white flex items-center justify-center rounded-lg backface-hidden">
+                    </div>
+                    <div
+                        class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover rotate-y-180">
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <div class="absolute bottom-10 right-24 text-white">
+        <button id="endTurnBtn"
+            class="clickSoundActivated soundButton opacity-0 scale-95 hover:scale-105 transition-transform button cursorCards"></button>
+    </div>
+
+    <!-- <div class="absolute bottom-10 left-20 text-white">
+        <button id="soundBtn"
+            class="clickSoundActivated soundButton opacity-0 scale-95 hover:scale-105 transition-transform musicButton cursorCards"
+            onclick="showHelp()"></button>
+    </div> -->
+
+    <div class="absolute bottom-40 right-24 text-white">
+        <button id="creditsBtn"
+            class="clickSoundActivated soundButton opacity-0 scale-95 hover:scale-105 transition-transform creditsButton cursorCards"
+            onclick="showCredits()"></button>
+    </div>
+
+    <div class="absolute bottom-72 right-24 text-white">
+        <button id="helpBtn"
+            class="clickSoundActivated soundButton opacity-0 scale-95 hover:scale-105 transition-transform helpButton cursorCards"
+            onclick="showHelp()"></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

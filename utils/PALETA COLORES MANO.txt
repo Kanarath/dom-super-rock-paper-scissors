@@ -1,0 +1,6 @@
+Piel media-clara
+
+Base: #D8A575
+Sombra media: #C7845A
+Sombra oscura: #A25D3A
+Iluminación: #F0C4A3

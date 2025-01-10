@@ -1,0 +1,169 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+    cursor: url("Mouse_Basic.png") 0 0, pointer;
+}
+
+.bodyTest {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    /* border: 2px solid red; */
+}
+
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+    background-image: url('MAIN_TITLE.png');
+    background-size: cover;
+    background-position: center;
+    transition: background-image 2s ease;
+    animation: zoomIn 2s forwards;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.2);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.change-background {
+    background-image: url('Main_Board_Green.png');
+    transition: background-image 2s ease;
+    animation: zoomIn 2s forwards;
+}
+
+.container-playerCards {
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgb(255, 0, 195);
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    bottom:10px;
+    left: 10px;
+}
+.container-computerCards {
+    width: 100%;
+    height: 50%;
+    border: 2px solid blue;
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    top:10px;
+    right: 10px;
+}
+
+
+.cardFlipped{
+    background: url('CARTA_PROYECTO_BACK_A.png');
+    transform: rotate(-180deg);
+}
+
+.computerCards {
+    width: 500px;
+    height: 200px;
+    display: flex;
+    margin: 50px;
+}
+
+.computerPowerUps {
+    position: absolute;
+    top: 175px;
+    left: 25px;
+    width: 500px;
+    height: 200px;
+    display: flex;
+    margin: 50px;
+}
+
+.playerCards {
+    position: absolute;
+    bottom: 175px;
+    left: 25px;
+    width: 500px;
+    height: 200px;
+    display: flex;
+    margin: 50px;
+}
+
+#rock-iA{
+    background: url('CARTA_PROYECTO_PIEDRA_A.png');
+}
+#paper-iA{
+    background: url('CARTA_PROYECTO_PAPEL_A.png');
+}
+.cardFlipped{
+    background: url('CARTA_PROYECTO_BACK_A.png');
+}
+#scissors-iA{
+    background: url('CARTA_PROYECTO_SCISSORS_A.png');
+}
+
+#rock  {
+    background: url('CARTA_PROYECTO_PIEDRA_A.png');
+}
+
+.cardBack {
+    background: url(CARTA_PROYECTO_BACK_A.png);
+}
+
+#paper  {
+    background: url('CARTA_PROYECTO_PAPEL_A.png');
+}
+
+#scissors  {
+    background: url('CARTA_PROYECTO_SCISSORS_A.png');
+}
+
+.playerPowerUps {
+    position: absolute;
+    bottom: 175px;
+    left: 600px;
+    width: 500px;
+    height: 200px;
+    display: flex;
+    margin: 50px;
+}
+
+.reversePower  {
+    background: url('CARTA_PROYECTO_REVERSE_A.png');
+}
+
+.changePlus  {
+    background: url('CARTA_PROYECTO_CHANGE_+_A.png');
+}
+
+.changeMinus  {
+    background: url('CARTA_PROYECTO_CHANGE_-_A.png');
+}
+
+
+.card {
+    width: 200px;
+    height: 384px;
+}
+
+.selection{
+    transform: translateY(-60px);
+}
+.card:hover {
+    transform: translateY(-60px);
+    cursor: url("MOUSE_Hover.png") 0 0, pointer;
+}
+
+.card:hover~.card {
+    transform: translateX(60px);
+}

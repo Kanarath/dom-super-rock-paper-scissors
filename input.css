@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  html {
+    overflow: hidden;
+    cursor:
+      url("./src/cursors/Mouse_Basic.png") 0 0,
+      pointer;
+  }
+
+  .selection {
+    transform: translateY(-60px);
+  }
+}
+
+@layer utilities {
+  .perspective {
+    perspective: 1000px;
+  }
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  .rotate-x-180 {
+    transform: rotateX(180deg);
+  }
+
+  .zoom-in {
+    transition: background-image 2s ease;
+    animation: zoomIn 2s forwards;
+  }
+  .change-background {
+    background-image: url("./src/img/Main_Board_Green.png");
+    transition: background-image 1s ease;
+    animation: zoomIn 1s forwards;
+  }
+
+  .swap-container.swap .card-1 {
+    @apply -translate-x-[160px];
+  }
+
+  .swap-container.swap .card-2 {
+    @apply translate-x-[160px];
+  }
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.2);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .secondBackground {
+    background-image: url("src/img/Main_Board_Green_Small.png");
+    transition: background-image 1s ease;
+    animation: zoomIn 1s forwards;
+    width: 1205px;
+    height: 573px;
+  }
+}
+
+.button {
+  width: 320px;
+  height: 100px;
+  background-image: url("src/img/Button_end_Turn.png");
+}
+
+.button:hover {
+  background-image: url("src/img/Button_end_Turn_Hover.png");
+  cursor:
+    url("./src/cursors/MOUSE_Hover.png") 0 0,
+    pointer;
+}
+
+.buttonNewGame {
+  width: 320px;
+  height: 100px;
+  background-image: url("src/img/NewGame.png");
+}
+
+.buttonNewGame:hover {
+  background-image: url("src/img/NewGame_Hover.png");
+  cursor:
+    url("./src/cursors/MOUSE_Hover.png") 0 0,
+    pointer;
+}
+
+.cursorCards:hover {
+  cursor:
+    url("./src/cursors/MOUSE_Hover.png") 0 0,
+    pointer;
+}
+
+.creditsButton {
+  width: 224px;
+  height: 96px;
+  background-image: url("src/img/Credits.png");
+}
+
+.creditsButton:hover {
+  background-image: url("src/img/Credits_Hover.png");
+  cursor:
+    url("./src/cursors/MOUSE_Hover.png") 0 0,
+    pointer;
+}
+
+.helpButton {
+  width: 224px;
+  height: 96px;
+  background-image: url("src/img/Help.png");
+}
+
+.helpButton:hover {
+  background-image: url("src/img/Help_Hover.png");
+  cursor:
+    url("./src/cursors/MOUSE_Hover.png") 0 0,
+    pointer;
+}
+
+#endTurnBtn {
+}
+#creditsBtn {
+}
+
+#helpBtn {
+}
+
+#soundBtn {
+}
+
+@layer results {
+  .won {
+    background-image: url("src/img/RESULTS_WIN.png");
+    transition: background-image 2s ease;
+    animation: resultImage 2s forwards;
+  }
+
+  .lose {
+    background-image: url("src/img/RESULTS_LOSE.png");
+    transition: background-image 2s ease;
+    animation: resultImage 2s forwards;
+  }
+
+  .tie {
+    background-image: url("src/img/RESULTS_TIE.png");
+    transition: background-image 2s ease;
+    animation: resultImage 2s forwards;
+  }
+
+  @keyframes resultImage {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}
+
+#iaHandResults {
+}
+
+#iaPowerUpResults {
+}
+
+.results {
+  width: 400px;
+  height: 200px;
+  background-image: url("src/img/results.png");
+}
+
+.soundButton {
+}
+
+.soundCards {
+}
+
+.clickSoundActivated {
+}
+
+.resultImg {
+  width: 500px;
+  height: 200px;
+}
+
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateCounterClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.clockWiseAnim {
+  animation: rotateClockWise 2s forwards;
+}
+
+.clockCounterWiseAnim {
+  animation: rotateCounterClockWise 2s forwards;
+}
+
+.musicButton {
+  width: 524px;
+  height: 524px;
+  background-image: url(/src/img/Sound_Button.png);
+}
+
+.musicButton:hover {
+  width: 524px;
+  height: 524px;
+  background-image: url(/src/img/Sound_Button_Hover.png);
+  cursor:
+  url("./src/cursors/MOUSE_Hover.png") 0 0,
+  pointer;
+}

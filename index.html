@@ -15,16 +15,16 @@
     <!-- music -->
     <audio id="backgroundMusic" src="/src/sound/RPS_Loop.mp3" autoplay loop></audio>
     <!-- modal Reuslts -->
-    <div id="modal" class="fixed hidden inset-0 z-10 bg-black bg-opacity-40 items-center justify-center ">
-        <div class="secondBackground text-center relative flex gap-4">
+    <div id="modal" class="fixed inset-0 z-10 items-center justify-center hidden bg-black bg-opacity-40 ">
+        <div class="relative flex gap-4 text-center secondBackground">
             <!-- cards container -->
-            <div class="flex gap-20 absolute top-56 left-16 w-96 justify-between">
+            <div class="absolute flex justify-between gap-20 top-56 left-16 w-96">
                 <!-- section card game -->
-                <section class="flex relative swap-container">
-                    <div class="w-120px h-192px perspective top-0 left-0 absolute transition-transform duration-500 card-2">
-                        <div class="relative w-full  bg-cover h-full transition-transform duration-500 transform-style-preserve-3d">
+                <section class="relative flex swap-container">
+                    <div class="absolute top-0 left-0 transition-transform duration-500 w-120px h-192px perspective card-2">
+                        <div class="relative w-full h-full transition-transform duration-500 bg-cover transform-style-preserve-3d">
                             <!-- Cara frontal -->
-                            <div id="handResults" class="absolute w-full h-full bg-cover text-white flex items-center justify-center backface-hidden">
+                            <div id="handResults" class="absolute flex items-center justify-center w-full h-full text-white bg-cover backface-hidden">
                             </div>
                             <!-- Cara trasera -->
                             <div class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover rotate-y-180">
@@ -32,9 +32,9 @@
                         </div>
                     </div>
                     <div class=" w-120px h-192px perspective absolute top-0 left-[160px] transition-transform duration-500  card-1">
-                        <div class="relative w-full bg-cover h-full transition-transform duration-500 transform-style-preserve-3d">
+                        <div class="relative w-full h-full transition-transform duration-500 bg-cover transform-style-preserve-3d">
                             <!-- Cara frontal -->
-                            <div id="iaHandResults" class="absolute  w-full h-full bg-cover text-white flex items-center justify-center backface-hidden">
+                            <div id="iaHandResults" class="absolute flex items-center justify-center w-full h-full text-white bg-cover backface-hidden">
                             </div>
                             <!-- Cara trasera -->
                             <div class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center rounded-lg backface-hidden bg-cover rotate-y-180">
@@ -43,11 +43,11 @@
                     </div>
                 </section>
                 <!-- power ups -->
-                <section class="flex relative">
-                    <div class="w-120px h-192px perspective absolute top-0 left-0 ">
+                <section class="relative flex">
+                    <div class="absolute top-0 left-0 w-120px h-192px perspective ">
                         <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
                             <!-- Cara frontal -->
-                            <div id="powerUpResults" class="absolute w-full h-full bg-cover text-white flex items-center justify-center backface-hidden">
+                            <div id="powerUpResults" class="absolute flex items-center justify-center w-full h-full text-white bg-cover backface-hidden">
                             </div>
                             <!-- Cara trasera -->
                             <div class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center backface-hidden bg-cover rotate-y-180">
@@ -56,8 +56,8 @@
                     </div>
                     <div class="w-120px h-192px perspective top-0 left-[160px] absolute ">
                         <!-- Cara frontal -->
-                        <div id="iaPowerUpResults" class="relative bg-cover w-full h-full transition-transform duration-500 transform-style-preserve-3d">
-                            <div class="absolute w-full h-full bg-cover text-white flex items-center justify-center backface-hidden">
+                        <div id="iaPowerUpResults" class="relative w-full h-full transition-transform duration-500 bg-cover transform-style-preserve-3d">
+                            <div class="absolute flex items-center justify-center w-full h-full text-white bg-cover backface-hidden">
                             </div>
                             <!-- Cara trasera -->
                             <div class="absolute w-full h-full bg-[url('./src/img/CARTA_PROYECTO_BACK.png')] text-white flex items-center justify-center backface-hidden bg-cover rotate-y-180">
@@ -67,17 +67,17 @@
                 </section>
             </div>
 
-            <div class="results absolute top-1"></div>
-            <div id="resultImg" class="resultImg zoom-in absolute top-1 right-12"></div>
+            <div class="absolute results top-1"></div>
+            <div id="resultImg" class="absolute resultImg zoom-in top-1 right-12"></div>
             <div class="flex">
-                <button id="playAgain" class="clickSoundActivated soundButton buttonNewGame hover:scale-105 absolute bottom-10 right-12" onclick="resetGame()">
+                <button id="playAgain" class="absolute clickSoundActivated soundButton buttonNewGame hover:scale-105 bottom-10 right-12" onclick="resetGame()">
                 </button>
             </div>
         </div>
     </div>
 
     <section id="computerCards"
-        class="container-Cards justify-center items-center gap-10 absolute top-20 right-40 opacity-0 scale-95 transition-all  duration-1000 pointer-events-none">
+        class="absolute items-center justify-center gap-10 transition-all duration-1000 scale-95 opacity-0 pointer-events-none container-Cards top-20 right-40">
         <article class="flex gap-6 rotate-x-180">
             <div id="rock-iA" class="card w-120px h-192px perspective">
                 <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
@@ -107,7 +107,7 @@
             <div id="scissors-iA" class="card w-120px h-192px perspective">
                 <div class="relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
                     <div
-                        class="absolute w-full h-full bg-green-500 text-white flex items-center justify-center rounded-lg backface-hidden rotate-y-180">
+                        class="absolute flex items-center justify-center w-full h-full text-white bg-green-500 rounded-lg backface-hidden rotate-y-180">
                     </div>
                     <!-- back -->
                     <div
@@ -156,7 +156,7 @@
     </section>
 
     <section id="playerCards"
-        class="container-Cards justify-center items-center gap-10 absolute bottom-20 left-24 opacity-0 scale-95 transition-all  duration-1000 pointer-events-none">
+        class="absolute items-center justify-center gap-10 transition-all duration-1000 scale-95 opacity-0 pointer-events-none container-Cards bottom-20 left-24">
         <article class="flex gap-6">
             <div id="rock-player"
                 class="clickSoundActivated soundCards playerCard group w-120px h-192px perspective card">
@@ -244,26 +244,26 @@
         </article>
     </section>
 
-    <div class="absolute bottom-10 right-24 text-white">
+    <div class="absolute text-white bottom-12 right-24">
         <button id="endTurnBtn"
-            class="clickSoundActivated soundButton opacity-0 scale-95 hover:scale-105 transition-transform button cursorCards"></button>
+            class="transition-transform scale-95 opacity-0 clickSoundActivated soundButton hover:scale-105 button cursorCards"></button>
     </div>
 
-    <!-- <div class="absolute bottom-10 left-20 text-white">
+    <div class="absolute text-white bottom-92 right-24">
         <button id="soundBtn"
-            class="clickSoundActivated soundButton opacity-0 scale-95 hover:scale-105 transition-transform musicButton cursorCards"
+            class="transition-transform scale-95 opacity-0 clickSoundActivated soundButton hover:scale-105 musicButton cursorCards"
             onclick="showHelp()"></button>
-    </div> -->
+    </div>
 
-    <div class="absolute bottom-40 right-24 text-white">
+    <div class="absolute text-white bottom-40 right-24">
         <button id="creditsBtn"
-            class="clickSoundActivated soundButton opacity-0 scale-95 hover:scale-105 transition-transform creditsButton cursorCards"
+            class="transition-transform scale-95 opacity-0 clickSoundActivated soundButton hover:scale-105 creditsButton cursorCards"
             onclick="showCredits()"></button>
     </div>
 
-    <div class="absolute bottom-72 right-24 text-white">
+    <div class="absolute text-white bottom-72 right-24">
         <button id="helpBtn"
-            class="clickSoundActivated soundButton opacity-0 scale-95 hover:scale-105 transition-transform helpButton cursorCards"
+            class="transition-transform scale-95 opacity-0 clickSoundActivated soundButton hover:scale-105 helpButton cursorCards"
             onclick="showHelp()"></button>
     </div>
 

@@ -218,15 +218,15 @@
 }
 
 .musicButton {
-  width: 524px;
-  height: 524px;
-  background-image: url(/src/img/Sound_Button.png);
+  width: 176px;
+  height: 176px;
+  background-image: url("/src/img/Sound_Button.png");
 }
 
 .musicButton:hover {
-  width: 524px;
-  height: 524px;
-  background-image: url(/src/img/Sound_Button_Hover.png);
+  width: 176px;
+  height: 176px;
+  background-image: url("/src/img/Sound_Button_Hover.png");
   cursor:
   url("./src/cursors/MOUSE_Hover.png") 0 0,
   pointer;
